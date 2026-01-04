@@ -31,7 +31,8 @@ jobs:
               "http://yaoguailu.cn/reaction",
               "http://yaoguailu.cn/cps/reaction",
               "http://yaoguailu.cn/order",
-              "http://yaoguailu.cn/cps/speed"
+              "http://yaoguailu.cn/cps/speed",
+              "http://yaoguailu.cn/cps"
             ]
           }'
 
