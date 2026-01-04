@@ -1,0 +1,58 @@
+name: IndexNow API Submission
+
+on:
+  schedule:
+    # 每天 12:00 UTC 时间运行（北京时间 20:00）
+    # 如果需要北京时间 12:00，请使用 '0 4 * * *'（UTC 4:00）
+    - cron: "0 12 * * *"
+  workflow_dispatch: # 允许手动触发
+    inputs:
+      host:
+        description: "目标主机"
+        required: true
+        default: "https://yaoguailu.cn"
+
+jobs:
+  submit-to-indexnow:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Submit to IndexNow API
+        run: |
+          # 准备请求数据
+          REQUEST_DATA='{
+            "host": "${{ github.event.inputs.host || 'https://yaoguailu.cn' }}",
+            "key": "f26fa35a4cd945bd8d9ac93f42aaf66e",
+            "keyLocation": "https://yaoguailu.cn/f26fa35a4cd945bd8d9ac93f42aaf66e.txt",
+            "urlList": [
+              "http://yaoguailu.cn/reaction",
+              "http://yaoguailu.cn/cps/reaction",
+              "http://yaoguailu.cn/order",
+              "http://yaoguailu.cn/cps/speed"
+            ]
+          }'
+
+          # 提交 POST 请求到 IndexNow API
+          RESPONSE=$(curl -s -w "\nHTTP_STATUS:%{http_code}" \
+            -X POST \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "$REQUEST_DATA" \
+            "https://api.indexnow.org/IndexNow")
+
+          # 提取 HTTP 状态码和响应体
+          HTTP_STATUS=$(echo "$RESPONSE" | grep HTTP_STATUS: | cut -d':' -f2)
+          RESPONSE_BODY=$(echo "$RESPONSE" | sed '/HTTP_STATUS:/d')
+
+          echo "HTTP Status: $HTTP_STATUS"
+          echo "Response: $RESPONSE_BODY"
+
+          # 检查是否成功
+          if [ "$HTTP_STATUS" -eq 200 ] || [ "$HTTP_STATUS" -eq 202 ]; then
+            echo "✅ IndexNow 提交成功！"
+          else
+            echo "❌ IndexNow 提交失败！"
+            exit 1
+          fi
