@@ -28,10 +28,12 @@ jobs:
             "key": "f26fa35a4cd945bd8d9ac93f42aaf66e",
             "keyLocation": "https://yaoguailu.cn/f26fa35a4cd945bd8d9ac93f42aaf66e.txt",
             "urlList": [
+              "http://yaoguailu.cn",
               "http://yaoguailu.cn/reaction",
-              "http://yaoguailu.cn/cps/reaction",
+
               "http://yaoguailu.cn/order",
-              "http://yaoguailu.cn/cps/speed"
+              "http://yaoguailu.cn/cps/speed",
+              "http://yaoguailu.cn/cps"
             ]
           }'
 
