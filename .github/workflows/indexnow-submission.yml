@@ -58,8 +58,8 @@ jobs:
             echo "❌ IndexNow 提交失败！"
             exit 1
           fi
-jobs:
-  submit-to-indexnow:
+
+  submit-to-indexnow-smp:
     runs-on: ubuntu-latest
 
     steps:
