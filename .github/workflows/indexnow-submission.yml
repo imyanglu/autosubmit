@@ -33,6 +33,7 @@ jobs:
                "https://seemypower.cn/tracking",
               "https://seemypower.cn/order",
               "https://seemypower.cn/cps/speed",
+              "https://seemypower.cn/focus",
               "https://seemypower.cn/cps"
             ]
           }'
