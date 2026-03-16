@@ -34,7 +34,9 @@ jobs:
               "https://seemypower.cn/order",
               "https://seemypower.cn/cps/speed",
               "https://seemypower.cn/focus",
-              "https://seemypower.cn/cps"
+              "https://seemypower.cn/cps",
+              "https://seemypower.cn/time",
+              "https://seemypower.cn/typing"
             ]
           }'
 
