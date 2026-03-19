@@ -36,7 +36,8 @@ jobs:
               "https://seemypower.cn/focus",
               "https://seemypower.cn/cps",
               "https://seemypower.cn/time",
-              "https://seemypower.cn/typing"
+              "https://seemypower.cn/typing",
+              "https://seemypower.cn/schulte",
             ]
           }'
 
